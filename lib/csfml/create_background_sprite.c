@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2023
+** project_name
+** File description:
+** create_background_sprite
+*/
+
 #include "my_csfml.h"
 
 sfSprite *create_background_sprite(void)
@@ -7,6 +14,6 @@ sfSprite *create_background_sprite(void)
 
     sfSprite_setTexture(b, t, sfFalse);
     sfSprite_setScale(b, (sfVector2f) {1920, 1080} );
-    sfSprite_setOrigin(b, (sfVector2f) {1920 /2, 1080 /2} );
+    sfSprite_setOrigin(b, (sfVector2f) {1920 / 2, 1080 / 2} );
     return b;
 }

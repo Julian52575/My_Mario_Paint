@@ -17,6 +17,23 @@
 #include <stdio.h>
 #include "my_csfml.h"
 
+static void create_view(struct csfml_tools *ct)
+{
+    ct->view = sfView_createFromRect( (sfFloatRect) {0, 0, 1920, 1080});
+    sfView_setViewport(ct->view,
+    (sfFloatRect) {0.0f, 0.1176f, 1.0f, 1.0f - 0.1176 * 2} );
+
+    ct->upper_view = sfView_createFromRect( (sfFloatRect) {0, -400, 1920,
+            1080 * 0.1176} );
+    sfView_setViewport(ct->upper_view,
+    (sfFloatRect) {0.0f, 0.0f, 1.0f, 0.1176f} );
+
+    ct->lower_view = sfView_createFromRect( (sfFloatRect) {0, -200, 1920,
+            1080 * 0.1176} );
+    sfView_setViewport(ct->lower_view,
+    (sfFloatRect) {0.0f, 1.0f - 0.1176f, 1.0f, 0.1176f});
+}
+
 struct csfml_tools *create_ct(char *name)
 {
     struct csfml_tools *ct = malloc(sizeof(struct csfml_tools) );
@@ -29,10 +46,11 @@ struct csfml_tools *create_ct(char *name)
     ct->event_buffer = 0.0;
     ct->mouvement_buffer = 0.0;
     ct->player_animation_buffer = 0.0;
-    ct->view = sfView_createFromRect( (sfFloatRect) {0, 0, 1920, 1080});
-    ct->upper_view = sfView_createFromRect( (sfFloatRect) {0, -400, 1920,
-            1080 * 0.1176} );
-    ct->lower_view = sfView_createFromRect( (sfFloatRect) {0, -200, 1920,
-            1080 * 0.1176} ); 
+    ct->debug = create_rectangle(42, 42, 1920, 1080);
+    sfRenderWindow_setFramerateLimit(ct->window, 600000);
+    sfRectangleShape_setFillColor(ct->debug, sfBlue);
+    create_view(ct);
+    sfRenderWindow_setMouseCursorVisible(ct->window, sfFalse);
+    sfRenderWindow_setKeyRepeatEnabled(ct->window, sfFalse);
     return ct;
 }

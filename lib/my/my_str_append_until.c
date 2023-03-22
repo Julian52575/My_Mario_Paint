@@ -8,7 +8,8 @@
 #include <stdlib.h>
 int my_strlen(char *str);
 
-//append the characters found until END in the BUFFER passed as a parameter and returns how much the STR had to advance
+//append the characters found until END in the BUFFER passed as a parameter
+//and returns how much the STR had to advance
 int my_str_append_until(char *str, char end, char *buffer, int b_start)
 {
     if (!buffer) buffer = malloc(sizeof(char *) * my_strlen(str));

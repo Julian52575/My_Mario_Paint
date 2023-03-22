@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2023
+** project_name
+** File description:
+** create_background_rectangle
+*/
+
 #include "my_csfml.h"
 
 sfRectangleShape *create_background_rectangle(void)

@@ -20,9 +20,12 @@
 
 sfRectangleShape *create_rectangle(int x_perimeter, int y_perimeter
 , int x_position, int y_position);
+
 sfCircleShape *create_circle(int radius, int x_position, int y_position);
+
 sfSprite *create_sprite(char *image_path, float x_scale,
 float y_scale, sfIntRect *rect);
+sfSprite *create_sprite_from_texture(sfImage *image);
 
 sfSound *create_sound(char *file_path);
 sfIntRect create_texture_rect(int width, int height, int x, int y);
@@ -34,9 +37,10 @@ float get_angle(sfVector2f vector1, sfVector2f vector2);
 float produit_scalaire(sfVector2f U, sfVector2f V, int abs);
 int two_vector_colision(sfVector2f v, sfVector2f u);
 
-bool my_sprite_intersects(sfSprite *sp1, sfSprite *sp2); 
+bool my_sprite_intersects(sfSprite *sp1, sfSprite *sp2);
+bool my_sp_rect_intersects(sfSprite *sp, sfRectangleShape *rect);
 
-void my_sfSprite_destroy(sfSprite *sprite);
+void my_sfsprite_destroy(sfSprite *sprite);
 
 struct chained_sprites {
     sfSprite *entity;
@@ -78,6 +82,7 @@ struct csfml_tools {
     sfView *view;
     sfView *upper_view;
     sfView *lower_view;
+    sfRectangleShape *debug;
 };
 
 struct csfml_tools *create_ct(char *name);

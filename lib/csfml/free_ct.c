@@ -13,5 +13,6 @@ void free_ct(struct csfml_tools *ct)
     sfView_destroy(ct->view);
     sfView_destroy(ct->upper_view);
     sfView_destroy(ct->lower_view);
+    sfRectangleShape_destroy(ct->debug);
     free(ct);
 }

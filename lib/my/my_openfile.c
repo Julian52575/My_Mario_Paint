@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2023
+** project_name
+** File description:
+** my_openfile
+*/
+
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
